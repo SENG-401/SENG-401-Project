@@ -1,8 +1,14 @@
 package com.example.tutor;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
+
+import javax.swing.text.html.Option;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -16,7 +22,13 @@ class TutorController {
     }
 
     @GetMapping
-    public String getMethodName() {
-        return new String("Hello World");
+    public TutorModel getTutorInfo(@RequestParam Long id) {
+        Optional<TutorModel> tutor = tutorService.getTutorInfo(id);
+        if (tutor.isPresent()) {
+            return tutor.get();
+        }
+        else{
+            throw new IllegalStateException("Tutor not found");
+        }
     }
 }

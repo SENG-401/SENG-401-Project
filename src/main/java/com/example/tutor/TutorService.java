@@ -1,5 +1,9 @@
 package com.example.tutor;
 
+import java.util.Optional;
+
+import javax.swing.text.html.Option;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,6 +13,10 @@ public class TutorService {
 
     public TutorService(TutorRepository tutorRepository) {
         this.tutorRepository = tutorRepository;
+    }
+
+    public Optional<TutorModel> getTutorInfo(Long id) {
+        return tutorRepository.findById(id);
     }
 
     public String addTutor(String entity) {

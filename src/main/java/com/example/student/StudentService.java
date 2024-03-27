@@ -1,6 +1,8 @@
 package com.example.student;
 
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +12,10 @@ public class StudentService {
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
+    }
+
+    public Optional<StudentModel> getStudentInfo(Long id) {
+        return studentRepository.findById(id);
     }
 
     public String addStudent(String entity) {
