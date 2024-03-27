@@ -5,9 +5,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 @RestController
@@ -28,6 +35,17 @@ public class StudentController {
         }
         else{
             throw new IllegalStateException("Student not found");
+        }
+    }
+
+    @PutMapping("/edit")
+    public ResponseEntity<String> updateStudentInfo(@RequestBody StudentModel newInfo) {
+        StudentModel model = studentService.updateStudentInfo(newInfo);
+        if (model != null) {
+            return ResponseEntity.ok("Student updated");
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Student does not exist");
         }
     }
 }
