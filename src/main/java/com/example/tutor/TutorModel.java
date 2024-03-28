@@ -10,15 +10,11 @@ import com.example.login.LoginUser;
 @Entity
 @Table(name = "tutor")
 public class TutorModel extends LoginUser {
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private LoginUser user;
+    @ElementCollection
+    private List<String> ableToTeach = new ArrayList<>();
 
     @ElementCollection
-    private List<String> ableToTeach = new ArrayList<>(); // Initialize the list
-
-    @ElementCollection
-    private List<String> socialMedia = new ArrayList<>(); // Initialize the list
+    private List<String> socialMedia = new ArrayList<>();
 
     @Transient
     private int userRating;

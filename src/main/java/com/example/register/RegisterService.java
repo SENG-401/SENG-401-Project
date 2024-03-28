@@ -35,6 +35,7 @@ public class RegisterService {
                 tutor.setIsTutor(user.isTutor().toString());
                 tutor.setIsStudent(user.isStudent().toString());
                 tutorRepository.save(tutor);
+                return Optional.of(tutor);
             }
             else if (user.isStudent()){
                 StudentModel student = new StudentModel();
@@ -46,11 +47,12 @@ public class RegisterService {
                 student.setIsTutor(user.isTutor().toString());
                 student.setIsStudent(user.isStudent().toString());
                 studentRepository.save(student);
+                return Optional.of(student);
             }
+            
             else{
                 throw new IllegalStateException("User type not specified");
             }
-            return Optional.of(user);
         }
         return Optional.empty();
     }

@@ -10,12 +10,8 @@ import com.example.login.LoginUser;
 @Entity
 @Table(name = "student")
 public class StudentModel extends LoginUser {
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private LoginUser user;
-
     @ElementCollection
-    private List<String> whatHelp = new ArrayList<>(); // Initialize the list
+    private List<String> whatHelp = new ArrayList<>();
 
     public StudentModel() {
     }

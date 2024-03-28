@@ -32,6 +32,7 @@ public class LoginUser {
     private String password;
     private Boolean isTutor;
     private Boolean isStudent;
+    private Boolean profileComplete;
 
     public LoginUser(){
 
@@ -101,5 +102,13 @@ public class LoginUser {
 
     public void setIsStudent(String isStudent) {
         this.isStudent = Boolean.parseBoolean(isStudent);
+    }
+
+    public Boolean getProfileComplete() {
+        return profileComplete;
+    }
+
+    public void setProfileComplete(Boolean profileComplete) {
+        this.profileComplete = profileComplete;
     }
 }

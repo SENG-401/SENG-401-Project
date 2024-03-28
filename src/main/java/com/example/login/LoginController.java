@@ -5,8 +5,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+import javax.swing.text.html.Option;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -30,6 +35,17 @@ public class LoginController {
         } 
         else {
             throw new IllegalStateException("Password is incorrect");
+        }
+    }
+    
+    @GetMapping("/userInfo")
+    public LoginUser getMethodName(@RequestParam String email) {
+        Optional<LoginUser> user = loginService.getUserInfo(email);
+        if (user.isPresent()){
+            return user.get();
+        }
+        else{
+            throw new IllegalStateException("User with that email does not exist");
         }
     }
     
