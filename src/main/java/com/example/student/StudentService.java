@@ -33,7 +33,7 @@ public class StudentService {
         return new String("Student deleted");
     }
 
-    public StudentModel updateStudentInfo(StudentModel newInfo) {
+    public Optional<StudentModel> updateStudentInfo(StudentModel newInfo) {
         Optional<LoginUser> user = loginRepository.findUserByEmail(newInfo.getEmail());
         if (user.isPresent() && user.get().isStudent()) {
 
@@ -41,15 +41,16 @@ public class StudentService {
             model.setId(user.get().getId());
             model.setFirstName(user.get().getFirstName());
             model.setLastName(user.get().getLastName());
-            
+            model.setIsStudent(user.get().isStudent().toString());
+            model.setIsTutor(user.get().isTutor().toString());
             model.setEmail(newInfo.getEmail());
             model.setPassword(newInfo.getPassword());
             model.setHelpList(newInfo.getHelpList());
             studentRepository.save(model);
-            return newInfo;
+            return Optional.of(newInfo);
         }
         else{
-            return null;
+            return Optional.empty();
         }
 
     }

@@ -40,8 +40,8 @@ public class StudentController {
 
     @PutMapping("/edit")
     public ResponseEntity<String> updateStudentInfo(@RequestBody StudentModel newInfo) {
-        StudentModel model = studentService.updateStudentInfo(newInfo);
-        if (model != null) {
+        Optional<StudentModel> model = studentService.updateStudentInfo(newInfo);
+        if (model.isPresent()) {
             return ResponseEntity.ok("Student updated");
         }
         else{
