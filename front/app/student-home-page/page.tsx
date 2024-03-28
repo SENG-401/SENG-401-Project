@@ -1,6 +1,26 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+const sendMessageToTutor = async () => {
+    try {
+        const response = await fetch('https://ututor-backend-816f9a0da7be.herokuapp.com/api/v1/student?id=someID', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // body: JSON.stringify({
+            //    
+            // }),
+        });
+        if (!response.ok) {
+            throw new Error('Failed to send message to tutor');
+        }
+        const data = await response.json();
+        console.log('Message sent:', data);
+    } catch (error) {
+        console.error('Error sending message to tutor:', error);
+    }
+};
 export default function StudentHomePage() {
     return (
         <div className="h-screen flex flex-col justify-top items-center">
