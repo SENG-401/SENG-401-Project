@@ -27,6 +27,8 @@ public class TutorModel extends LoginUser {
 
     private int totalStarts;
 
+    private String imageURL;
+
     private String bio;
 
     public TutorModel() {
@@ -93,5 +95,13 @@ public class TutorModel extends LoginUser {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
