@@ -31,7 +31,7 @@ export async function postUserLogin(email : string, password: string) {
     let response;
     try {
      
-        response = await fetch(`https://ututor-backend-816f9a0da7be.herokuapp.com/api/v1/register`, {
+        response = await fetch(`https://ututor-backend-816f9a0da7be.herokuapp.com/api/v1/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
