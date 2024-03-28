@@ -1,0 +1,32 @@
+{
+    "Tutor": {
+        "firstName": "John",
+        "lastName": "Dopen",
+        "email": "john.doe@gmail.com",
+        "image": "<Some Link to Image>",
+        "bio": "Hi, I am Joe Doe. I am a tutor at XYZ. I have been teaching for 5 years. I have a degree in Computer Science. I am passionate about teaching and helping students. I am available for tutoring on weekdays and weekends. I am also available for online tutoring. I am looking forward to helping you.",
+        "tags": ["Computer Science", "Math", "Physics", "Chemistry", "Biology"]
+    },
+    "Post": {
+        "id": 1,
+        "title": "MATH 211",
+        "description": "Ex-Prof offering math 211 tutoring",
+        "content": "Hi ! I offer math 211 tutoring as an ex-prof from University of MagicLand. Email me at: temp@temp.com",
+        "tags": ["Math", "Math 211", "Tutoring", "Ex-Prof"],
+        "creatorId": "james.carter@ucalgary.ca",
+        "isStudentPost": false
+    },
+    "Student-Register": {
+        "name": "James",
+        "lastname": "Carter",
+        "email": "james.carter@ucalgary.ca",
+        "password": "UofC2024"
+    },
+    "Tutor-Register": {
+        "name": "John",
+        "lastname": "Doe",
+        "email": "john.doe@gmail.com",
+        "isProfileComplete": false
+    }
+}
+
