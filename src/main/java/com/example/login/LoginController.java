@@ -3,6 +3,8 @@ package com.example.login;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.hasher.Hasher;
+
 import java.util.Optional;
 
 import javax.swing.text.html.Option;
@@ -30,7 +32,7 @@ public class LoginController {
             throw new IllegalStateException("User does not exist");
         }
         LoginUser userInfo = userOptional.get();
-        if (user.getPassword().equals(userInfo.getPassword())){
+        if (Hasher.hashString(user.getPassword()).equals(userInfo.getPassword())){
             return userInfo;
         } 
         else {

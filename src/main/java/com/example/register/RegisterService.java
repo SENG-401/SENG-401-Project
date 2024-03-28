@@ -1,6 +1,7 @@
 package com.example.register;
 import org.springframework.stereotype.Service;
 
+import com.example.hasher.Hasher;
 import com.example.login.LoginUser;
 import com.example.student.StudentModel;
 import com.example.student.StudentRepository;
@@ -29,7 +30,7 @@ public class RegisterService {
                 tutor.setId(user.getId());
                 tutor.setFirstName(user.getFirstName());
                 tutor.setLastName(user.getLastName());
-                tutor.setPassword(user.getPassword());
+                tutor.setPassword(Hasher.hashString(user.getPassword()));
                 tutor.setEmail(user.getEmail());
                 tutor.setBio("Hello, I am a tutor");
                 tutor.setIsTutor(user.isTutor().toString());
@@ -42,7 +43,7 @@ public class RegisterService {
                 student.setId(user.getId());
                 student.setFirstName(user.getFirstName());
                 student.setLastName(user.getLastName());
-                student.setPassword(user.getPassword());
+                student.setPassword(Hasher.hashString(user.getPassword()));
                 student.setEmail(user.getEmail());
                 student.setIsTutor(user.isTutor().toString());
                 student.setIsStudent(user.isStudent().toString());
