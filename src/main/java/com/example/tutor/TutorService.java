@@ -39,14 +39,36 @@ public class TutorService {
         if (user.isPresent() && user.get().isTutor()) {
 
             TutorModel model = new TutorModel();
-            model.setId(user.get().getId());
-            model.setFirstName(user.get().getFirstName());
-            model.setLastName(user.get().getLastName());
-            model.setIsStudent(user.get().isStudent().toString());
-            model.setIsTutor(user.get().isTutor().toString());
-            model.setEmail(newInfo.getEmail());
-            model.setPassword(newInfo.getPassword());
-            model.setAbleToTeach(newInfo.getAbleToTeach());
+            if (user.get().getFirstName() != null) {
+                model.setFirstName(user.get().getFirstName());
+            }
+            if (user.get().getLastName() != null) {
+                model.setLastName(user.get().getLastName());
+            }
+            if (user.get().isStudent() != null) {
+                model.setIsStudent(user.get().isStudent().toString());
+            }
+            if (user.get().isTutor() != null) {
+                model.setIsTutor(user.get().isTutor().toString());
+            }
+            if (user.get().getProfileComplete() != null) {
+                model.setProfileComplete(user.get().getProfileComplete());
+            }
+            if (user.get().getPassword() != null) {
+                model.setPassword(user.get().getPassword());
+            }
+
+            if (newInfo.getBio() != null) {
+                model.setBio(newInfo.getBio());
+            }
+
+            if (newInfo.getEmail() != null) {
+                model.setEmail(newInfo.getEmail());
+            }
+
+            if (newInfo.getAbleToTeach() != null) {
+                model.setAbleToTeach(newInfo.getAbleToTeach());
+            }
             tutorRepository.save(model);
             return Optional.of(newInfo);
         }
