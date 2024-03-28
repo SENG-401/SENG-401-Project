@@ -34,7 +34,7 @@ public class TutorService {
         return new String("Tutor deleted");
     }
 
-    public TutorModel updateTutorInfo(TutorModel newInfo) {
+    public Optional<TutorModel> updateTutorInfo(TutorModel newInfo) {
         Optional<LoginUser> user = loginRepository.findUserByEmail(newInfo.getEmail());
         if (user.isPresent() && user.get().isTutor()) {
 
@@ -42,15 +42,16 @@ public class TutorService {
             model.setId(user.get().getId());
             model.setFirstName(user.get().getFirstName());
             model.setLastName(user.get().getLastName());
-            
+            model.setIsStudent(user.get().isStudent().toString());
+            model.setIsTutor(user.get().isTutor().toString());
             model.setEmail(newInfo.getEmail());
             model.setPassword(newInfo.getPassword());
             model.setAbleToTeach(newInfo.getAbleToTeach());
             tutorRepository.save(model);
-            return newInfo;
+            return Optional.of(newInfo);
         }
         else{
-            return null;
+            return Optional.empty();
         }
     }
 

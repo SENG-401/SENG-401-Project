@@ -41,8 +41,8 @@ class TutorController {
 
     @PutMapping("/edit")
     public ResponseEntity<String> updateTutorInfo(@RequestBody TutorModel newInfo) {
-        TutorModel model = tutorService.updateTutorInfo(newInfo);
-        if (model != null) {
+        Optional<TutorModel> model = tutorService.updateTutorInfo(newInfo);
+        if (model.isPresent()) {
             return ResponseEntity.ok("Tutor updated");
         }
         else{
